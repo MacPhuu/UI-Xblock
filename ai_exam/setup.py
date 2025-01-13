@@ -38,5 +38,9 @@ setup(
             'ai_exam = ai_exam:AIExamXBlock',
         ]
     },
-    package_data=package_data("ai_exam", ["static", "public"]),
+     package_data={
+        'ai_exam': [
+            'static/*/*',  
+        ]
+    }
 )

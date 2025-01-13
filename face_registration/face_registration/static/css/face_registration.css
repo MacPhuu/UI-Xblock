@@ -46,6 +46,8 @@
 #webcam {
   border: 5px solid #e0e0e0;
   border-radius: 10px;
+  width: 680px;
+  height: 100%;
 }
 
 /* Camera button styling */
@@ -64,8 +66,8 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 20px gray,
-    0 0 40px gray,
-    0 0 60px gray;
+      0 0 40px gray,
+      0 0 60px gray;
 }
 
 #capture-button:disabled {
@@ -154,11 +156,15 @@
   margin-bottom: 10px;
 }
 
+#example h3 {
+  text-align: center;
+}
+
 #image-instruction {
   border-radius: 10px;
   border: 1px solid #ddd;
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
 }
 
 #confirm-button {
@@ -167,4 +173,152 @@
 
 .d-none {
   display: none;
+}
+
+@media screen and (min-width: 350px)  and (max-width: 699px) {
+  #title-instruction {
+      font-size: 13px;
+  }
+
+  #webcam {
+    width: 60vw;
+    height: 100%;
+  }
+
+  .devfacebank_block {
+      padding: 15px;
+  }
+
+  .facebank-container {
+      padding: 5px;
+      width: 100%;
+  }
+
+  .video-container {
+      width: 100%;
+      margin: 0;
+      flex: 4;
+  }
+
+  .demo-container {
+      flex: 1;
+  }
+
+  .video-area {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+  #example {
+      width: 3rem;
+  }
+
+  #example h3 {
+      font-size: 10px !important;
+  }
+
+  .image-wrapper {
+      position: relative;
+      width: 3.5rem;
+      height: 3.5rem;
+      overflow: hidden;
+  }
+
+  .delete-button {
+      padding: 0px;
+      background-color: #FEFFEA;
+      text-align: center;
+      justify-content: center;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: none;
+      top: 0px;
+      right: 0px;
+  }
+
+  #status {
+      font-size: 11px;
+  }
+
+  .demo-container button {
+      margin: 13px 5px;
+      background: rgb(90, 104, 211);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 8px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1100px)  {
+  #title-instruction {
+      font-size: 30px;
+  }
+
+  .devfacebank_block {
+      padding: 15px;
+      width: 100%;
+  }
+
+  .facebank-container {
+      padding: 15px;
+      width: 100%;
+  }
+
+  #example {
+      width: 7rem;
+  }
+
+  #example h3 {
+      font-size: 20px !important;
+  }
+
+  #webcam {
+    width: 65vw;
+    height: auto;
+}
+  .image-wrapper {
+      position: relative;
+      width: 8rem;
+      height: 8rem;
+      overflow: hidden;
+  }
+
+  .delete-button {
+      padding: 0px;
+      background-color: #FEFFEA;
+      text-align: center;
+      justify-content: center;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: none;
+      top: 0px;
+      right: 0px;
+  }
+
+  #status {
+      font-size: 25px;
+  }
+
+  .demo-container button {
+      margin: 40px 5px;
+      background: rgb(90, 104, 211);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 8px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
 }

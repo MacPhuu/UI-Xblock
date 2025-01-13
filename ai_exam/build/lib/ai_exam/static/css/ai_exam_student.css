@@ -9,13 +9,12 @@
 }
 #ai_exam--exam{
     height: 70vh;
-    width: 100%;
+    width: 70vw;
     margin-right: 10px;
 }
 #ai_exam--pdf{
     width: 100%;
     height: 100%;
-    max-width: 100%;
     background-color: white;
     border: 2px solid black;
 
@@ -23,7 +22,7 @@
 .ai_exam--sub-container{
     border: 4px solid #47abed;
     padding: 1.5em;
-    width: 100%;
+    width: auto;
     background-color: #edf8fa;
     display: flex;
 }
@@ -45,9 +44,12 @@
     border: 4px double #47abed;
     width: 256px;
     height: 168px;
-    z-index: 9999;
 }
-@media screen and (min-width: 350px)  and (max-width: 699px) {
+@media screen and (max-width: 450px) {
+    .ai_exam--sub-container{
+        width: 100%;
+        padding: 0;
+    }
     .ai_exam--visible{
         top: 0;
         right: 0;
@@ -58,64 +60,14 @@
         width: 100%;
         display: block;
         position: relative;
-        padding: 0;
     }
     #ai_exam--exam{
-        width: 100%;
-        height: 50vh;
+        width: 95vw;
+        height: 90vh;
     }
     .ai_exam--video{
-        width: auto;
+        width: 100px;
         height: 70px;
     }
-}
-
-
-@media screen and (min-width: 700px) and (max-width: 1000px) {
-    .ai_exam--visible{
-        top: 0;
-        right: 0;
-        display: block;
-        position: absolute;
-    }
-    .ai_exam--sub-container{
-        width: 100%;
-        display: block;
-        position: relative;
-        padding: 0;
-    }
-    #ai_exam--exam{
-        width: 100%;
-        height: 70vh;
-    }
-    .ai_exam--video{
-        width: auto;
-        height: 100px;
-    }
-
-    
    
-}
-
-@media screen and (min-width: 1001px) and (max-width: 1400px) {
-    .ai_exam--visible{
-        top: 0;
-        right: 0;
-        display: block;
-        position: absolute;
-    }
-    .ai_exam--sub-container{
-        width: 100%;
-        display: block;
-        position: relative;
-        padding: 0;
-    }
-    #ai_exam--exam{
-        width: 100%;
-        height: 70vh;
-    }
-    .ai_exam--video{
-        width: auto;
-        height: 140px;
-    }
 }

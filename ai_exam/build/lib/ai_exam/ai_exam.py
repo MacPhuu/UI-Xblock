@@ -39,9 +39,22 @@ class AIExamXBlock(XBlock):
         """
         frag = Fragment()
 
-        frag.add_css(self.resource_string("static/css/ai_exam.css"))
+        frag.add_css(self.resource_string("static/css/ai_exam_student.css"))
         frag.add_javascript(self.resource_string("static/js/src/ai_exam.js"))
         frag.initialize_js('AIExamXBlock')
+
+        frag.add_content(loader.render_django_template('static/html/ai_exam.html', context=context))
+        return frag
+
+    def studio_view(self, context=None):
+        """
+        Studio view, shown to teachers
+        """
+        frag = Fragment()
+
+        frag.add_css(self.resource_string("static/css/ai_exam_student.css"))
+        frag.add_javascript(self.resource_string("static/js/src/ai_exam.js"))
+        frag.initialize_js('AIExamStudioXBlock')
 
         frag.add_content(loader.render_django_template('static/html/ai_exam.html', context=context))
         return frag

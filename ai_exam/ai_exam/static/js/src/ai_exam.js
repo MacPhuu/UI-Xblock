@@ -1,4 +1,3 @@
-/* Javascript for AIExamXBlock. */
 function AIExamXBlock(runtime, element) {
     const video = $('#ovideo')[0];
     const canvas = $('<canvas>')[0];
@@ -13,10 +12,10 @@ function AIExamXBlock(runtime, element) {
     let imageLists = [];
     const aiserver = "https://aiserver.daotao.ai/api/v1/invigilation/";
 
-    const settings = {
+    var settings = {
         video: true,
-        audio: false
-    }
+        audio: false  
+    };
 
     function getStudent() {
         var handlerUrl = runtime.handlerUrl(element, 'get_user_info');
@@ -30,8 +29,10 @@ function AIExamXBlock(runtime, element) {
 
     function getStudentID(res) {
 
+        console.log(res);
 
         studentID = res.user_info.username;
+        userIsStaff = res.user_info.user_is_staff;
 
         getAttendaceID()
     }
@@ -81,25 +82,26 @@ function AIExamXBlock(runtime, element) {
         }
     }
 
+    getCourse()
+    getStudent()
+
+
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        // Request access to the webcam
         navigator.mediaDevices.getUserMedia(settings)
             .then(function (stream) {
-                // Set the video source to the stream from the webcam
                 video.srcObject = stream;
+
                 video.play();
             })
             .catch(function (error) {
                 console.error('Unable to access the webcam: ', error);
+                alert('Webcam access is not supported or denied.');
             });
     } else {
         console.error('Webcam access is not supported in this browser.');
+        alert('Webcam access is not supported in this browser.');
     }
 
-
-
-    getCourse()
-    getStudent()
 
     async function getAttendaceID() {
 
@@ -128,47 +130,51 @@ function AIExamXBlock(runtime, element) {
     }
 
 
-    function imagesCollector() {
-        canvas.width = MAX_WIDTH;
-        canvas.height = MAX_HEIGHT;
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    // function imagesCollector() {
+    //     canvas.width = MAX_WIDTH;
+    //     canvas.height = MAX_HEIGHT;
+    //     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        const imageUrl = canvas.toDataURL('image/jpeg', 0.7);
+    //     const imageUrl = canvas.toDataURL('image/jpeg', 0.7);
 
-        imageLists.push(imageUrl);
-        if (imageLists.length >= 6) {
-            const Auth = 'Bearer ' + accessToken;
-            $.ajax({
-                type: "POST",
-                url: aiserver,
-                contentType: "application/json",
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Headers": "*",
-                    "Authorization": Auth
-                },
-                data: JSON.stringify({
-                    attendance_id: attendanceID,
-                    student_id: studentID,
-                    portraits: imageLists
-                }),
-                success: function (response) {
-                    console.log("Photos uploaded successfully!");
-                    console.log(response);
-                },
-                error: function (xhr, status, error) {
-                    console.error("Error uploading photos." + xhr.responseText);
-                }
-            });
-            imageLists = [];
-        }
-    }
+    //     imageLists.push(imageUrl);
+    //     if (imageLists.length >= 6) {
+    //         const Auth = 'Bearer ' + accessToken;
+    //         $.ajax({
+    //             type: "POST",
+    //             url: aiserver,
+    //             contentType: "application/json",
+    //             headers: {
+    //                 "Access-Control-Allow-Origin": "*",
+    //                 "Access-Control-Allow-Headers": "*",
+    //                 "Authorization": Auth
+    //             },
+    //             data: JSON.stringify({
+    //                 attendance_id: attendanceID,
+    //                 student_id: studentID,
+    //                 portraits: imageLists
+    //             }),
+    //             success: function (response) {
+    //                 console.log("Photos uploaded successfully!");
+    //                 console.log(response);
+    //             },
+    //             error: function (xhr, status, error) {
+    //                 console.error("Error uploading photos." + xhr.responseText);
+    //             }
+    //         });
+    //         imageLists = [];
+    //     }
+    // }
 
-    setTimeout(function () {
-        setInterval(imagesCollector, 3000);
-    }, 5000);
+    // setTimeout(function () {
+    //     setInterval(imagesCollector, 3000);
+    // }, 5000);
 
     $(window).on("beforeunload", function () {
         localStorage.removeItem("attendance_id");
     });
+}
+
+function AIExamStudioXBlock(runtime, element) {
+
 }

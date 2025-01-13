@@ -19,7 +19,7 @@
 /* Main container styling */
 .attendance-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-start;
     width: 80%;
     background: white;
@@ -45,6 +45,8 @@
 #webcam {
     border: 5px solid #e0e0e0;
     border-radius: 10px;
+    width: 100%;
+    height: auto;
 }
 
 /* Camera button styling */
@@ -99,7 +101,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: sticky;
 }
 
 .confirm-container button {
@@ -128,4 +129,54 @@
 }
 .d-none {
     display: none;
+}
+@media screen and (min-width: 350px)  and (max-width: 699px) {
+    .attendance_block{
+        padding:5px;
+
+    }
+    #title-instruction{
+        font-size: 10px;
+    }
+    .attendance-container{
+        width: 98%;
+        padding: 5px;
+    }
+    #webcam{
+        width: 95;
+        height: auto
+    }
+    .video-container{
+        margin: 2px;
+    }
+    .confirm-container button {
+        font-size: 10px;
+        padding: 5px 10px;
+        margin: 0;
+    }
+    .confirm-container{
+        align-items: center ;
+   }
+   .image-wrapper img {
+    width: 70%;
+    height: auto;
+    margin-top: 10px
+   }
+   .image-wrapper {
+    position: relative;
+    width: 100px;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+   
+}
+
+@media screen and (min-width: 700px) and (max-width: 1100px){
+    .image-wrapper img {
+        width: 100%;
+        height: auto;
+        margin-top: 10px
+       }
 }
