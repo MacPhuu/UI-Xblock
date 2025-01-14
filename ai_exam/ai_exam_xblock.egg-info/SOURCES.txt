@@ -5,6 +5,7 @@ ai_exam/static/README.txt
 ai_exam/static/css/ai_exam_student.css
 ai_exam/static/css/ai_exam_studio.css
 ai_exam/static/html/ai_exam.html
+ai_exam/static/js/src/ai_exam.js
 ai_exam_xblock.egg-info/PKG-INFO
 ai_exam_xblock.egg-info/SOURCES.txt
 ai_exam_xblock.egg-info/dependency_links.txt

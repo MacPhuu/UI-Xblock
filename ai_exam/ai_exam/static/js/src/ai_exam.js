@@ -130,51 +130,47 @@ function AIExamXBlock(runtime, element) {
     }
 
 
-    // function imagesCollector() {
-    //     canvas.width = MAX_WIDTH;
-    //     canvas.height = MAX_HEIGHT;
-    //     context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    function imagesCollector() {
+        canvas.width = MAX_WIDTH;
+        canvas.height = MAX_HEIGHT;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    //     const imageUrl = canvas.toDataURL('image/jpeg', 0.7);
+        const imageUrl = canvas.toDataURL('image/jpeg', 0.7);
 
-    //     imageLists.push(imageUrl);
-    //     if (imageLists.length >= 6) {
-    //         const Auth = 'Bearer ' + accessToken;
-    //         $.ajax({
-    //             type: "POST",
-    //             url: aiserver,
-    //             contentType: "application/json",
-    //             headers: {
-    //                 "Access-Control-Allow-Origin": "*",
-    //                 "Access-Control-Allow-Headers": "*",
-    //                 "Authorization": Auth
-    //             },
-    //             data: JSON.stringify({
-    //                 attendance_id: attendanceID,
-    //                 student_id: studentID,
-    //                 portraits: imageLists
-    //             }),
-    //             success: function (response) {
-    //                 console.log("Photos uploaded successfully!");
-    //                 console.log(response);
-    //             },
-    //             error: function (xhr, status, error) {
-    //                 console.error("Error uploading photos." + xhr.responseText);
-    //             }
-    //         });
-    //         imageLists = [];
-    //     }
-    // }
+        imageLists.push(imageUrl);
+        if (imageLists.length >= 6) {
+            const Auth = 'Bearer ' + accessToken;
+            $.ajax({
+                type: "POST",
+                url: aiserver,
+                contentType: "application/json",
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "*",
+                    "Authorization": Auth
+                },
+                data: JSON.stringify({
+                    attendance_id: attendanceID,
+                    student_id: studentID,
+                    portraits: imageLists
+                }),
+                success: function (response) {
+                    console.log("Photos uploaded successfully!");
+                    console.log(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error uploading photos." + xhr.responseText);
+                }
+            });
+            imageLists = [];
+        }
+    }
 
-    // setTimeout(function () {
-    //     setInterval(imagesCollector, 3000);
-    // }, 5000);
+    setTimeout(function () {
+        setInterval(imagesCollector, 3000);
+    }, 5000);
 
     $(window).on("beforeunload", function () {
         localStorage.removeItem("attendance_id");
     });
-}
-
-function AIExamStudioXBlock(runtime, element) {
-
 }

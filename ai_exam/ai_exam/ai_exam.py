@@ -12,12 +12,6 @@ loader = ResourceLoader(__name__)
 
 @XBlock.needs('user')
 class AIExamXBlock(XBlock):
-    """
-    TO-DO: document what your XBlock does.
-    """
-
-    # Fields are defined on the class.  You can access them in your code as
-    # self.<fieldname>.
 
     url = String(
         display_name="PDF URL",
