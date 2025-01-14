@@ -1,4 +1,4 @@
-"""Setup for ai_exam XBlock."""
+"""Setup for examination XBlock."""
 
 
 import os
@@ -23,24 +23,20 @@ def package_data(pkg, roots):
 
 
 setup(
-    name='ai_exam-xblock',
+    name='examination-xblock',
     version='0.1',
-    description='ai_exam XBlock',   # TODO: write a better description.
+    description='examination XBlock',   # TODO: write a better description.
     license='UNKNOWN',          # TODO: choose a license: 'AGPL v3' and 'Apache 2.0' are popular.
     packages=[
-        'ai_exam',
+        'examination',
     ],
     install_requires=[
         'XBlock',
     ],
     entry_points={
         'xblock.v1': [
-            'ai_exam = ai_exam:AIExamXBlock',
+            'examination = examination:ExaminationXBlock',
         ]
     },
-     package_data={
-        'ai_exam': [
-            'static/*/*',  
-        ]
-    }
+    package_data=package_data("examination", ["static", "public"]),
 )

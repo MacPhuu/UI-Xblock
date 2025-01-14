@@ -1,4 +1,5 @@
-function AIExamXBlock(runtime, element) {
+/* Javascript for ExaminationXBlock. */
+function ExaminationXBlock(runtime, element) {
     const video = $('#ovideo')[0];
     const canvas = $('<canvas>')[0];
     const context = canvas.getContext('2d');
@@ -14,7 +15,7 @@ function AIExamXBlock(runtime, element) {
 
     var settings = {
         video: true,
-        audio: false  
+        audio: false
     };
 
     function getStudent() {
@@ -173,4 +174,7 @@ function AIExamXBlock(runtime, element) {
     $(window).on("beforeunload", function () {
         localStorage.removeItem("attendance_id");
     });
+}
+
+function AIExamStudioXBlock(runtime, element) {
 }
